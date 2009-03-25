@@ -3,6 +3,8 @@
 
 inherit gems
 
+USE_RUBY="ruby18"
+
 DESCRIPTION="A systems integration framework written in Ruby"
 HOMEPAGE="http://wiki.opscode.com/display/chef/Home"
 SRC_URI="http://gems.opscode.com/gems/${P}.gem"
@@ -21,4 +23,9 @@ RDEPEND="
 	dev-ruby/ohai
 	dev-ruby/stomp"
 
+src_install () {
+	gems_src_install
+	doinitd "${FILESDIR}/init/chef"
+	doconfd "${FILESDIR}/conf/chef"
+}
 

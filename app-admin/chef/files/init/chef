@@ -1,0 +1,18 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+start() {
+	ebegin "Starting Chef client"
+	start-stop-daemon --start --quiet -b -m -p /var/run/chef-client.pid --exec /usr/bin/chef-client -- ${CLIENT_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Shutting down Chef client"
+	start-stop-daemon --stop --quiet -p /var/run/chef-client.pid
+	eend $?
+}
+
+# vim:ts=4
+
