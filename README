@@ -6,6 +6,11 @@ You will probably need to add some package.keywords for the various packages to 
 
 app-admin/chef and app-admin/chef-server
 
+Currently merb-core depends on json_pure and the Opscode gems on json. These two have conflicting files so you'll need to add something like this to your make.conf:
+
+    # evil hack
+    COLLISION_IGNORE="/usr/bin/edit_json.rb /usr/bin/prettify_json.rb /usr/lib64/ruby/gems/1.8/bin/edit_json.rb /usr/lib64/ruby/gems/1.8/bin/prettify_json.rb"
+
 To start the client, just run /etc/init.d/chef start
 
 This whole thing is a work in progress.  Please submit patches or merge requests.
