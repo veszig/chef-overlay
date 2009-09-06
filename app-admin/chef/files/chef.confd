@@ -1,2 +1,0 @@
-# Client command line options go here
-CLIENT_OPTS="-i 3600 -s 300 -L /var/log/chef/client.log"

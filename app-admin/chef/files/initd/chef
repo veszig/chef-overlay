@@ -8,12 +8,12 @@ depend() {
 
 start() {
 	ebegin "Starting Chef client"
-	start-stop-daemon --start --quiet -b -p /var/run/chef-client.pid --exec /usr/bin/chef-client -- -d ${CLIENT_OPTS}
+	start-stop-daemon --start --quiet -b -p /var/run/chef/chef-client.pid --exec /usr/bin/chef-client -- -c /etc/chef/client.rb
 	eend $?
 }
 
 stop() {
 	ebegin "Shutting down Chef client"
-	start-stop-daemon --stop --quiet -p /var/run/chef-client.pid
+	start-stop-daemon --stop --quiet -p /var/run/chef/chef-client.pid
 	eend $?
 }
