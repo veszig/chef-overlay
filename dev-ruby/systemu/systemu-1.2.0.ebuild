@@ -4,14 +4,15 @@
 
 inherit gems
 
-DESCRIPTION="A client for the STOMP messaging protocol written in Ruby"
-HOMEPAGE="http://stomp.codehaus.org/Ruby+Client"
+USE_RUBY="ruby18"
 
-LICENSE="Apache-2.0"
+DESCRIPTION=""
+HOMEPAGE="http://codeforpeople.com/lib/ruby/systemu/"
+
+LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
 RDEPEND=""
-

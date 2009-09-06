@@ -3,15 +3,16 @@
 # $Header: $
 
 inherit gems
+
 USE_RUBY="ruby18"
 
-DESCRIPTION="A JSON implementation in Ruby"
-HOMEPAGE="http://json.rubyforge.org/"
+DESCRIPTION="This is a JSON implementation in pure Ruby."
+HOMEPAGE="http://json.rubyforge.org"
 
-LICENSE="|| ( Ruby GPL-2 )"
-KEYWORDS="~x86 ~amd64"
+LICENSE="Ruby"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="!dev-ruby/json"
-
+DEPEND=""
+RDEPEND=""

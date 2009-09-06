@@ -6,10 +6,11 @@ inherit gems
 
 USE_RUBY="ruby18"
 
-DESCRIPTION="'abstract.rb' is a library which enable you to define abstract method in Ruby."
-HOMEPAGE="http://rubyforge.org/projects/abstract"
+DESCRIPTION=""
+HOMEPAGE="http://www.opscode.com"
+SRC_URI="http://gems.opscode.com/gems/${P}.gem"
 
-LICENSE="Ruby"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

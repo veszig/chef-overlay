@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+depend() {
+	need net
+}
+
 start() {
 	ebegin "Starting Chef client"
 	start-stop-daemon --start --quiet -b -p /var/run/chef-client.pid --exec /usr/bin/chef-client -- -d ${CLIENT_OPTS}
@@ -13,6 +17,3 @@ stop() {
 	start-stop-daemon --stop --quiet -p /var/run/chef-client.pid
 	eend $?
 }
-
-# vim:ts=4
-

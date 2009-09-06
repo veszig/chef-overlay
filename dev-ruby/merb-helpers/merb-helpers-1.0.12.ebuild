@@ -6,13 +6,13 @@ inherit gems
 
 USE_RUBY="ruby18"
 
-DESCRIPTION="'abstract.rb' is a library which enable you to define abstract method in Ruby."
-HOMEPAGE="http://rubyforge.org/projects/abstract"
+DESCRIPTION="Helper support for Merb"
+HOMEPAGE="http://merbivore.com"
 
-LICENSE="Ruby"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND=""
+RDEPEND=">=dev-ruby/merb-core-1.0.12"

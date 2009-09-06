@@ -6,15 +6,13 @@ inherit gems
 
 USE_RUBY="ruby18"
 
-DESCRIPTION="A systems integration framework written in Ruby"
-HOMEPAGE="http://wiki.opscode.com/display/chef/Home"
-SRC_URI="http://gems.opscode.com/gems/${P}.gem"
+DESCRIPTION="Ruby client for the Stomp messaging protocol"
+HOMEPAGE="http://stomp.codehaus.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
 RDEPEND=""
-

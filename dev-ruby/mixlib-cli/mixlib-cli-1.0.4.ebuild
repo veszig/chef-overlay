@@ -4,15 +4,16 @@
 
 inherit gems
 
-DESCRIPTION="A systems integration framework written in Ruby"
-HOMEPAGE="http://wiki.opscode.com/display/chef/Home"
+USE_RUBY="ruby18"
+
+DESCRIPTION=""
+HOMEPAGE="http://www.opscode.com"
 SRC_URI="http://gems.opscode.com/gems/${P}.gem"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
 RDEPEND=""
-
