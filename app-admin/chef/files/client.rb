@@ -1,22 +1,16 @@
 # Chef Client Config File
 
-log_level          :info
-log_location       '/var/log/chef/chef-client.log'
+log_level              :info
+log_location           '/var/log/chef/client.log'
+ssl_verify_mode        :verify_none
+chef_server_url        'http://chef:4000'
+#chef_server_url       'https://chef'
 
-interval           3600
-splay              300
+validation_client_name 'chef-validator'
+validation_key         '/etc/chef/validation.pem'
+client_key             '/etc/chef/client.pem'
 
-ssl_verify_mode    :verify_none
-registration_url   'https://localhost'
-openid_url         'https://localhost:444'
-template_url       'https://localhost'
-remotefile_url     'https://localhost'
-search_url         'https://localhost'
-role_url           'https://localhost'
+file_cache_path        '/var/lib/chef/cache'
+pid_file               '/var/run/chef/chef-client.pid'
 
-file_store_path    '/var/lib/chef/file_store'
-file_cache_path    '/var/lib/chef/cache'
-
-pid_file           '/var/run/chef/chef-client.pid'
-
-Chef::Log::Formatter.show_time = true
+Mixlib::Log::Formatter.show_time = true

@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net rabbitmq
+	after couchdb
+}
+
+CHEF_SOLR_BINARY=${CHEF_SOLR_BINARY:-/usr/bin/chef-solr}
+CHEF_SOLR_PIDFILE=${CHEF_SOLR_PIDFILE:-/var/run/chef/solr.pid}
+CHEF_SOLR_LOGFILE=${CHEF_SOLR_LOGFILE:-/var/log/chef/solr.log}
+CONFIGFILE=${CONFIGFILE:-/etc/chef/server.rb}
+CHEF_USER=${CHEF_USER:-chef}
+CHEF_GROUP=${CHEF_GROUP:-chef}
+
+start() {
+	ebegin "Starting Chef SOLR"
+	start-stop-daemon --start --quiet --pidfile ${CHEF_SOLR_PIDFILE} -m -b \
+        --chuid ${CHEF_USER}:${CHEF_GROUP} --exec ${CHEF_SOLR_BINARY} -- \
+		-c ${CONFIGFILE} ${CHEF_SOLR_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Shutting down Chef SOLR"
+	start-stop-daemon --stop --quiet --pidfile ${CHEF_SOLR_PIDFILE}
+	eend $?
+}

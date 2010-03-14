@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net chef-solr
+}
+
+CHEF_SOLR_INDEXER_BINARY=${CHEF_SOLR_INDEXER_BINARY:-/usr/bin/chef-solr-indexer}
+CHEF_SOLR_INDEXER_PIDFILE=${CHEF_SOLR_INDEXER_PIDFILE:-/var/run/chef/solr-indexer.pid}
+CHEF_SOLR_INDEXER_LOGFILE=${CHEF_SOLR_INDEXER_LOGFILE:-/var/log/chef/solr-indexer.log}
+CONFIGFILE=${CONFIGFILE:-/etc/chef/server.rb}
+CHEF_USER=${CHEF_USER:-chef}
+CHEF_GROUP=${CHEF_GROUP:-chef}
+
+start() {
+	ebegin "Starting Chef SOLR indexer"
+	start-stop-daemon --start --quiet --chuid ${CHEF_USER}:${CHEF_GROUP} \
+		--pidfile ${CHEF_SOLR_INDEXER_PIDFILE} --exec ${CHEF_SOLR_INDEXER_BINARY} -- \
+		-d -P ${CHEF_SOLR_INDEXER_PIDFILE} -L ${CHEF_SOLR_INDEXER_LOGFILE} \
+		-c ${CONFIGFILE} ${CHEF_SOLR_INDEXER_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Shutting down Chef SOLR indexer"
+	start-stop-daemon --stop --quiet --pidfile ${CHEF_SOLR_INDEXER_PIDFILE}
+	eend $?
+}

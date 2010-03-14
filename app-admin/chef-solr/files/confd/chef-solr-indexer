@@ -1,0 +1,20 @@
+# /etc/conf.d/chef-solr-indexer: config file for /etc/init.d/chef-solr-indexer
+
+# The configuration file to use.
+#CONFIGFILE="/etc/chef/server.rb"
+
+# The user and group to set privilege to.
+#CHEF_USER="chef"
+#CHEF_GROUP="chef"
+
+# Log file location.
+#CHEF_SOLR_INDEXER_LOGFILE="/var/log/chef/solr-indexer.log"
+
+# Any radom options you want to pass to chef-solr-indexer.
+#CHEF_SOLR_INDEXER_OPTS=""
+
+# Path to the chef solr indexer binary.
+#CHEF_SOLR_INDEXER_BINARY="/usr/bin/chef-solr-indexer"
+
+# PID file location.
+#CHEF_SOLR_INDEXER_PIDFILE="/var/run/chef/solr-indexer.pid"

@@ -1,12 +1,16 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit gems
-
+EAPI="2"
 USE_RUBY="ruby18"
 
-DESCRIPTION="Erubis is an implementation of eRuby and has the following features:  * Very ..."
+RUBY_FAKEGEM_TASK_DOC=""
+RUBY_FAKEGEM_TASK_TEST=""
+
+inherit ruby-fakegem
+
+DESCRIPTION="An implementation of eRuby"
 HOMEPAGE="http://www.kuwata-lab.com/erubis/"
 
 LICENSE="MIT"
@@ -14,5 +18,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND=">=dev-ruby/abstract-1.0.0"
+ruby_add_rdepend ">=dev-ruby/abstract-1.0.0"
