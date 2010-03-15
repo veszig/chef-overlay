@@ -14,10 +14,19 @@ CONFIGFILE=${CONFIGFILE:-/etc/chef/server.rb}
 CHEF_USER=${CHEF_USER:-chef}
 CHEF_GROUP=${CHEF_GROUP:-chef}
 
+# TODO: this could be nicer
+DEFAULT_CHEF_DIRS=( /etc/chef /var/lib/chef /var/log/chef /var/run/chef )
+CHEF_DIRS=( ${CHEF_DIRS[@]:-${DEFAULT_CHEF_DIRS[@]}} )
+
+fix_dir_owners() {
+	for DIR in ${CHEF_DIRS[@]} ; do chown ${CHEF_USER}:${CHEF_GROUP} ${DIR} ; done
+}
+
 start() {
 	ebegin "Starting Chef SOLR"
+	fix_dir_owners
 	start-stop-daemon --start --quiet --pidfile ${CHEF_SOLR_PIDFILE} -m -b \
-        --chuid ${CHEF_USER}:${CHEF_GROUP} --exec ${CHEF_SOLR_BINARY} -- \
+		--chuid ${CHEF_USER}:${CHEF_GROUP} --exec ${CHEF_SOLR_BINARY} -- \
 		-c ${CONFIGFILE} ${CHEF_SOLR_OPTS}
 	eend $?
 }

@@ -10,7 +10,8 @@ signing_ca_cert    '/var/lib/chef/ca/cert.pem'
 signing_ca_key     '/var/lib/chef/ca/key.pem'
 couchdb_database   'chef'
 
-cookbook_path      [ '/var/lib/chef/cookbooks', '/var/lib/chef/site-cookbooks' ]
+cookbook_path         [ '/var/lib/chef/cookbooks', '/var/lib/chef/site-cookbooks' ]
+cookbook_tarball_path '/var/lib/chef/cookbook-tarballs'
 
 file_cache_path    '/var/lib/chef/cache'
 node_path          '/var/lib/chef/nodes'
@@ -18,6 +19,7 @@ openid_store_path  '/var/lib/chef/openid/store'
 openid_cstore_path '/var/lib/chef/openid/cstore'
 search_index_path  '/var/lib/chef/search_index'
 role_path          '/var/lib/chef/roles'
+cache_options({ :path => "/var/lib/chef/cache/checksums", :skip_expires => true })
 
 validation_client_name 'chef-validator'
 validation_key         '/etc/chef/validation.pem'

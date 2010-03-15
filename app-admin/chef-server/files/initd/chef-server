@@ -14,16 +14,25 @@ CLUSTER_NODES=${CLUSTER_NODES:-1}
 CHEF_USER=${CHEF_USER:-chef}
 CHEF_GROUP=${CHEF_GROUP:-chef}
 
+# TODO: this could be nicer
+DEFAULT_CHEF_DIRS=( /etc/chef /var/lib/chef /var/log/chef /var/run/chef )
+CHEF_DIRS=( ${CHEF_DIRS[@]:-${DEFAULT_CHEF_DIRS[@]}} )
+
+fix_dir_owners() {
+	for DIR in ${CHEF_DIRS[@]} ; do chown ${CHEF_USER}:${CHEF_GROUP} ${DIR} ; done
+}
+
 start() {
 	ebegin "Starting Chef server"
-    ${CHEF_SERVER_BINARY} -d -P ${CHEF_SERVER_PIDFILE} -C ${CONFIGFILE} \
-        -u ${CHEF_USER} -G ${CHEF_GROUP} \
-        -c ${CLUSTER_NODES} -L ${CHEF_SERVER_LOGFILE} > /dev/null
+	fix_dir_owners
+	${CHEF_SERVER_BINARY} -d -P ${CHEF_SERVER_PIDFILE} -C ${CONFIGFILE} \
+		-u ${CHEF_USER} -G ${CHEF_GROUP} \
+		-c ${CLUSTER_NODES} -L ${CHEF_SERVER_LOGFILE} > /dev/null
 	eend $?
 }
 
 stop() {
 	ebegin "Shutting down Chef server"
-    ${CHEF_SERVER_BINARY} -K all -P ${CHEF_SERVER_PIDFILE} > /dev/null
+	${CHEF_SERVER_BINARY} -K all -P ${CHEF_SERVER_PIDFILE} > /dev/null
 	eend $?
 }

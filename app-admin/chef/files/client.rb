@@ -11,6 +11,6 @@ validation_key         '/etc/chef/validation.pem'
 client_key             '/etc/chef/client.pem'
 
 file_cache_path        '/var/lib/chef/cache'
-pid_file               '/var/run/chef/chef-client.pid'
+pid_file               '/var/run/chef/client.pid'
 
 Mixlib::Log::Formatter.show_time = true
