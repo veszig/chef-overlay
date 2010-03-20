@@ -40,10 +40,10 @@ some files to `COLLISION_IGNORE` in your `make.conf`.
     mkdir -p /etc/portage/package.keywords
     # chef-client and dependencies
     wget -q -O /etc/portage/package.keywords/chef \
-      http://gist.github.com/raw/332188/005ea908819bd30dbacf1579706835d2590966c4/package.keywords.chef
+      http://gist.github.com/raw/332188/ddfd73dd910ac3a58cb23b62b2ccba6c7a0ac33a/package.keywords.chef
     # chef-server and dependencies
     wget -q -O /etc/portage/package.keywords/chef-server \
-      http://gist.github.com/raw/332188/fbc8d19c5fd0116bafa46d614a0384fad0dad66b/package.keywords.chef-server
+      http://gist.github.com/raw/332188/f6876e76e003a2f19a0b2dc4f9f5f8dc668db81d/package.keywords.chef-server
 
 [0]: http://wiki.opscode.com/display/chef
 [1]: http://github.com/kennethkalmer/portage-overlay/tree/master/net-misc/rabbitmq-server/
@@ -76,7 +76,7 @@ This will install [CouchDB][5] and [RabbitMQ][6] but you still need to create
 a RabbitMQ `vhost` and `user` for Chef:
 
     /etc/init.d/rabbitmq start
-    AMQP_PASS=$(dd if=/dev/urandom count=50 2>/dev/null | md5sum | awk '{print $1}'))
+    AMQP_PASS=$(dd if=/dev/urandom count=50 2>/dev/null | md5sum | awk '{print $1}')
     rabbitmqctl add_vhost /chef
     rabbitmqctl add_user chef ${AMQP_PASS}
     rabbitmqctl set_permissions -p /chef chef ".*" ".*" ".*"
