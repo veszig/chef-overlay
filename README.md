@@ -22,10 +22,9 @@ some files to `COLLISION_IGNORE` in your `make.conf`.
     git clone git://github.com/veszig/chef-overlay.git /usr/local/chef-overlay
 
     # OR download the tarball
-    wget -O /tmp/chef-overlay.tgz \
-      http://github.com/veszig/chef-overlay/tarball/master
-    tar xzf /tmp/chef-overlay.tgz -C /usr/local
-    mv /usr/local/veszig-chef-overlay-* /usr/local/chef-overlay
+    mkdir /usr/local/chef-overlay && wget -q -O - \
+      http://github.com/veszig/chef-overlay/tarball/master | \
+      tar xz --strip 1 -C /usr/local/chef-overlay
 
     # add the overlay to your make.conf
     cat >> /etc/make.conf <<\EOF
