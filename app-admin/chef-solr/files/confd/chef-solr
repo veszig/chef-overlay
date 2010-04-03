@@ -1,7 +1,7 @@
 # /etc/conf.d/chef-solr: config file for /etc/init.d/chef-solr
 
 # The configuration file to use.
-#CONFIGFILE="/etc/chef/server.rb"
+#CONFIGFILE="/etc/chef/solr.rb"
 
 # The user and group to set privilege to.
 #CHEF_USER="chef"

@@ -9,9 +9,6 @@
 # The splay time for running at intervals, in seconds.
 #SPLAY=20
 
-# Log file location.
-#CHEF_CLIENT_LOG="/var/log/chef/client.log"
-
 # Any radom options you want to pass to chef.
 #CHEF_CLIENT_OPTS=""
 

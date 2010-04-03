@@ -9,7 +9,7 @@ depend() {
 CHEF_SOLR_INDEXER_BINARY=${CHEF_SOLR_INDEXER_BINARY:-/usr/bin/chef-solr-indexer}
 CHEF_SOLR_INDEXER_PIDFILE=${CHEF_SOLR_INDEXER_PIDFILE:-/var/run/chef/solr-indexer.pid}
 CHEF_SOLR_INDEXER_LOGFILE=${CHEF_SOLR_INDEXER_LOGFILE:-/var/log/chef/solr-indexer.log}
-CONFIGFILE=${CONFIGFILE:-/etc/chef/server.rb}
+CONFIGFILE=${CONFIGFILE:-/etc/chef/solr.rb}
 CHEF_USER=${CHEF_USER:-chef}
 CHEF_GROUP=${CHEF_GROUP:-chef}
 

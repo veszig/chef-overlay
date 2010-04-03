@@ -23,7 +23,7 @@ ruby_add_rdepend "dev-ruby/amqp
 	dev-ruby/erubis
 	dev-ruby/extlib
 	dev-ruby/json
-	>=dev-ruby/mixlib-authentication-1.1.0
+	>=dev-ruby/mixlib-authentication-1.1.2
 	>=dev-ruby/mixlib-cli-1.1.0
 	>=dev-ruby/mixlib-config-1.1.0
 	>=dev-ruby/mixlib-log-1.1.0
@@ -32,14 +32,15 @@ ruby_add_rdepend "dev-ruby/amqp
 
 all_ruby_install() {
 	all_fakegem_install
+	doinitd "${FILESDIR}/initd/chef-client"
+	doconfd "${FILESDIR}/confd/chef-client"
 	keepdir /etc/chef
 	keepdir /var/lib/chef
 	keepdir /var/log/chef
 	keepdir /var/run/chef
-	doinitd "${FILESDIR}/initd/chef-client"
-	doconfd "${FILESDIR}/confd/chef-client"
 	insinto /etc/chef
 	doins "${FILESDIR}/client.rb"
+	doins "${FILESDIR}/solo.rb"
 }
 
 pkg_postinst() {

@@ -1,7 +1,7 @@
 # /etc/conf.d/chef-server-webui: config file for /etc/init.d/chef-server-webui
 
 # The configuration file to use.
-#CONFIGFILE="/etc/chef/server.rb"
+#CONFIGFILE="/etc/chef/webui.rb"
 
 # Number of merb daemons to run for chef-server-webui.
 #CLUSTER_NODES=1

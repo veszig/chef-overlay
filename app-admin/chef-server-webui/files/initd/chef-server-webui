@@ -10,7 +10,7 @@ depend() {
 CHEF_SERVER_WEBUI_BINARY=${CHEF_SERVER_WEBUI_BINARY:-/usr/bin/chef-server-webui}
 CHEF_SERVER_WEBUI_PIDFILE=${CHEF_SERVER_WEBUI_PIDFILE:-/var/run/chef/server-webui.%s.pid}
 CHEF_SERVER_WEBUI_LOGFILE=${CHEF_SERVER_WEBUI_LOGFILE:-/var/log/chef/server-webui.log}
-CONFIGFILE=${CONFIGFILE:-/etc/chef/server.rb}
+CONFIGFILE=${CONFIGFILE:-/etc/chef/webui.rb}
 CLUSTER_NODES=${CLUSTER_NODES:-1}
 CHEF_USER=${CHEF_USER:-chef}
 CHEF_GROUP=${CHEF_GROUP:-chef}

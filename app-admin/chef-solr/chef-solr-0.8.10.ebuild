@@ -21,17 +21,13 @@ IUSE=""
 RDEPEND=">=net-misc/rabbitmq-server-1.7.0
 	=virtual/jre-1.6.0"
 
-ruby_add_rdepend "=app-admin/chef-0.8.6
+ruby_add_rdepend "=app-admin/chef-0.8.10
 	>=dev-ruby/libxml-1.1.3
 	>=dev-ruby/uuidtools-2.0.0"
 
 pkg_setup() {
 	enewgroup chef
 	enewuser chef -1 -1 /var/lib/chef chef
-}
-
-all_ruby_prepare() {
-	epatch "${FILESDIR}"/${P}-pidfile_option.patch
 }
 
 each_ruby_install() {
@@ -46,9 +42,11 @@ all_ruby_install() {
 	doconfd "${FILESDIR}/confd/chef-solr"
 	doconfd "${FILESDIR}/confd/chef-solr-indexer"
 	keepdir /etc/chef
-	fowners -R chef:chef /etc/chef
+	insinto /etc/chef
+	doins "${FILESDIR}/solr.rb"
+	fowners chef:chef /etc/chef/{,solr.rb}
 	keepdir /var/lib/chef
 	keepdir /var/log/chef
 	keepdir /var/run/chef
-	fowners -R chef:chef /var/{lib,log,run}/chef
+	fowners chef:chef /var/{lib,log,run}/chef
 }

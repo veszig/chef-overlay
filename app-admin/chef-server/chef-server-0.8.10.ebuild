@@ -21,8 +21,9 @@ IUSE=""
 RDEPEND=">=dev-db/couchdb-0.10.0
 	>=net-misc/rabbitmq-server-1.7.0"
 
-ruby_add_rdepend "=app-admin/chef-server-api-0.8.6
-	=app-admin/chef-solr-0.8.6
+ruby_add_rdepend "=app-admin/chef-server-api-0.8.10
+	=app-admin/chef-solr-0.8.10
+	=app-admin/chef-0.8.10
 	dev-ruby/coderay
 	dev-ruby/haml
 	dev-ruby/json
@@ -56,15 +57,11 @@ all_ruby_install() {
 	doins "${FILESDIR}/server.rb"
 	keepdir /etc/chef/certificates
 	fperms 0700 /etc/chef/certificates
-	fowners -R chef:chef /etc/chef
+	fowners chef:chef /etc/chef/{,server.rb,certificates}
 	keepdir /var/lib/chef
-	keepdir /var/lib/chef/cache
-	keepdir /var/lib/chef/search_index
-	fowners -R chef:chef /var/lib/chef
 	keepdir /var/log/chef
-	fowners -R chef:chef /var/log/chef
 	keepdir /var/run/chef
-	fowners -R chef:chef /var/run/chef
+	fowners chef:chef /var/{lib,log,run}/chef
 }
 
 pkg_postinst() {

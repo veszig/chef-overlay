@@ -1,12 +1,12 @@
-# Configuration File For Chef (chef-server)
+# Configuration File For Chef (chef-server-webui)
 #
-# chef-server is a Merb application slice. By default it is configured to
-# run via Thin, the default Merb adapter. It can be run as:
+# chef-server-webui is a Merb application slice. By default it is configured to
+# run via Thin, the default Merb adapter. This should be run as:
 #
-#		chef-server -p 4000 -e production -a thin
+#   chef-server-webui -p 4040 -e production -a thin
 #
-# This starts up the RESTful Chef Server API on port 4000 in production mode
-# using the thin server adapter.
+# This starts up the Chef Server WebUI on port 4040 in production mode using
+# the thin server adapter.
 #
 # This file configures the behavior of the running server itself.
 #
@@ -31,11 +31,11 @@ log_level          :info
 # no quotes. This is the application log for the Merb workers that get
 # spawned.
 
-log_location       "/var/log/chef/server.log"
+log_location       "/var/log/chef/server-webui.log"
 
 # ssl_verify_mode specifies if the REST client should verify SSL certificates.
 # valid values are :verify_none, :verify_peer. The default Chef Server
-# installation will use a self-generated SSL certificate so this should be
+# installation will use a self-generated SSL certificate so this should be 
 # :verify_none unless you replace the certificate.
 
 ssl_verify_mode    :verify_none
@@ -46,30 +46,11 @@ ssl_verify_mode    :verify_none
 
 chef_server_url    "http://localhost:4000"
 
-# cookbook_path is a Ruby array of filesystem locations to search for cookbooks.
-# valid value is a string, or an array of strings of filesystem directory
-# locations. This setting is searched beginning (index 0) to end in order. You
-# might specify multiple search paths for cookbooks if you want to use an
-# upstream source, and provide localised "site" overrides. These should come
-# after the 'upstream' source. The default value, /var/lib/chef/cookbooks does
-# not contain any cookbooks by default.
-# See the Chef Wiki for more information about setting up a local repository
-# for working on cookbooks.
-# http://wiki.opscode.com/display/chef/Chef+Repository
-
-cookbook_path         [ "/var/lib/chef/cookbooks" ]
-cookbook_tarball_path "/var/lib/chef/cookbook-tarballs"
-
 # file_cache_path specifies where the client should cache cookbooks, server
 # cookie ID, and openid registration data.
 # valid value is any filesystem directory location.
 
 file_cache_path    "/var/lib/chef/cache"
-
-# node_path specifies a location for where to find node-specific recipes.
-# valid values are any filesystem direcory location.
-
-node_path          "/var/lib/chef/nodes"
 
 # openid_store_path specifies a location where to keep openid nonces for clients.
 # valid values are any filesystem directory location.
@@ -87,19 +68,6 @@ openid_store_path  "/var/lib/chef/openid/store"
 
 openid_cstore_path "/var/lib/chef/openid/cstore"
 
-# role_path designates where the server should load role JSON and Ruby DSL
-# files from.
-# valid values are any filesystem directory location. Roles are a feature
-# that allow you to easily reuse lists of recipes and attribute settings.
-# Please see the Chef Wiki page for information on how to utilize the feature.
-# http://wiki.opscode.com/display/chef/Roles
-#
-# NOTE: The role_path setting is deprecated on the chef-server, as the
-# roles are now stored directly in CouchDB rather than on the filesystem.
-# This option is kept for historical purposes and may be removed.
-
-role_path          "/var/lib/chef/roles"
-
 # Mixlib::Log::Formatter.show_time specifies whether the chef-client log should
 # contain timestamps.
 # valid values are true or false (no quotes, see above about Ruby idioms). The
@@ -108,12 +76,31 @@ role_path          "/var/lib/chef/roles"
 
 Mixlib::Log::Formatter.show_time = true
 
-signing_ca_path    "/etc/chef/certificates"
-signing_ca_cert    "/etc/chef/certificates/cert.pem"
-signing_ca_key     "/etc/chef/certificates/key.pem"
-openid_store_path  "/var/lib/chef/openid/store"
-search_index_path  "/var/lib/chef/search_index"
-cache_options({
-  :path => "/var/lib/chef/cache/checksums",
-  :skip_expires => true
-})
+signing_ca_cert "/etc/chef/certificates/cert.pem"
+signing_ca_key "/etc/chef/certificates/key.pem"
+
+# web_ui_client_name specifies the user to use when accessing the Chef
+# Server API. By default this is already set to "chef-webui".
+#
+# This user gets created by the chef-server and stored in CouchDB the
+# first time the server starts up if the user and key don't exist.
+
+web_ui_client_name "chef-webui"
+
+# web_ui_admin_user_name and web_ui_admin_default_password specify the
+# user and password that a human can use to initially log into the
+# chef-server-webui when it starts. The default value for the user is 'admin'
+# and the default password is'p@ssw0rd1' should be changed immediately on
+# login. The web form will display the password reset page on first login.
+
+web_ui_admin_user_name "admin"
+web_ui_admin_default_password "p@ssw0rd1"
+
+# web_ui_key specifics the file to use for authenticating with the Chef
+# Server API. By default this is already set to "/etc/chef/webui.pem".
+#
+# This file gets created by the chef-server and the public key stored in
+# CouchDB the first time the server starts up if the user and key don't
+# exist.
+
+web_ui_key "/etc/chef/webui.pem"

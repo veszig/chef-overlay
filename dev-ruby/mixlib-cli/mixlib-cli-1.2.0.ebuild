@@ -10,12 +10,10 @@ RUBY_FAKEGEM_TASK_TEST=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="An implementation of eRuby"
-HOMEPAGE="http://www.kuwata-lab.com/erubis/"
+DESCRIPTION="Mixin for creating command line applications"
+HOMEPAGE="http://github.com/opscode/mixlib-cli"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-ruby_add_rdepend ">=dev-ruby/abstract-1.0.0"

@@ -8,15 +8,14 @@ depend() {
 
 CHEF_CLIENT_BINARY=${CHEF_CLIENT_BINARY:-/usr/bin/chef-client}
 CHEF_CLIENT_PIDFILE=${CHEF_CLIENT_PIDFILE:-/var/run/chef/client.pid}
-CHEF_CLIENT_LOGFILE=${CHEF_CLIENT_LOGFILE:-/var/log/chef/client.log}
 CONFIGFILE=${CONFIGFILE:-/etc/chef/client.rb}
 INTERVAL=${INTERVAL:-1800}
 SPLAY=${SPLAY:-20}
 
 start() {
 	ebegin "Starting Chef client"
-	start-stop-daemon --start --quiet --pidfile ${CHEF_CLIENT_PIDFILE} --exec \
-		${CHEF_CLIENT_BINARY} -- -d -c ${CONFIGFILE} -L ${CHEF_CLIENT_LOGFILE} \
+	start-stop-daemon --start --quiet --pidfile ${CHEF_CLIENT_PIDFILE} \
+		--exec ${CHEF_CLIENT_BINARY} -- -d -c ${CONFIGFILE} \
 		-i ${INTERVAL} -s ${SPLAY} ${CHEF_CLIENT_OPTS}
 	eend $?
 }

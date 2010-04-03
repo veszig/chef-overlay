@@ -24,12 +24,12 @@ RDEPEND=">=dev-db/couchdb-0.10.0
 ruby_add_rdepend "dev-ruby/coderay
 	dev-ruby/haml
 	dev-ruby/json
-	dev-ruby/merb-assets
-	dev-ruby/merb-core
-	dev-ruby/merb-haml
-	dev-ruby/merb-helpers
-	dev-ruby/merb-param-protection
-	dev-ruby/merb-slices
+	<=dev-ruby/merb-assets-1.1.0
+	<=dev-ruby/merb-core-1.1.0
+	<=dev-ruby/merb-haml-1.1.0
+	<=dev-ruby/merb-helpers-1.1.0
+	<=dev-ruby/merb-param-protection-1.1.0
+	<=dev-ruby/merb-slices-1.1.0
 	dev-ruby/ruby-openid
 	www-servers/thin"
 
@@ -52,16 +52,18 @@ all_ruby_install() {
 	doinitd "${FILESDIR}/initd/chef-server-webui"
 	doconfd "${FILESDIR}/confd/chef-server-webui"
 	keepdir /etc/chef
-	fowners -R chef:chef /etc/chef
+	insinto /etc/chef
+	doins "${FILESDIR}/webui.rb"
+	fowners chef:chef /etc/chef/{,webui.rb}
 	keepdir /var/lib/chef
 	keepdir /var/log/chef
 	keepdir /var/run/chef
-	fowners -R chef:chef /var/{lib,log,run}/chef
+	fowners chef:chef /var/{lib,log,run}/chef
 }
 
 pkg_postinst() {
 	elog
-	elog "You should edit or create /etc/chef/server.rb before starting the service"
+	elog "You should edit or create /etc/chef/webui.rb before starting the service"
 	elog "with /etc/init.d/chef-server-webui start"
 	elog
 }
