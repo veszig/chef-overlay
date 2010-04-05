@@ -26,8 +26,8 @@ fix_dir_owners() {
 start() {
 	ebegin "Starting Chef server web interface"
 	fix_dir_owners
-	${CHEF_SERVER_WEBUI_BINARY} -d -P ${CHEF_SERVER_WEBUI_PIDFILE} \
-		-C ${CONFIGFILE} -u ${CHEF_USER} -G ${CHEF_GROUP} \
+	${CHEF_SERVER_WEBUI_BINARY} -d -P ${CHEF_SERVER_WEBUI_PIDFILE} --name \
+		chef-server-webui -C ${CONFIGFILE} -u ${CHEF_USER} -G ${CHEF_GROUP} \
 		-c ${CLUSTER_NODES} -L ${CHEF_SERVER_WEBUI_LOGFILE} > /dev/null
 	eend $?
 }

@@ -25,9 +25,10 @@ fix_dir_owners() {
 start() {
 	ebegin "Starting Chef SOLR"
 	fix_dir_owners
-	start-stop-daemon --start --quiet --pidfile ${CHEF_SOLR_PIDFILE} -m -b \
-		--chuid ${CHEF_USER}:${CHEF_GROUP} --exec ${CHEF_SOLR_BINARY} -- \
-		-c ${CONFIGFILE} -L ${CHEF_SOLR_LOGFILE} ${CHEF_SOLR_OPTS}
+	start-stop-daemon --start --quiet --chuid ${CHEF_USER}:${CHEF_GROUP} \
+		--pidfile ${CHEF_SOLR_PIDFILE} --name java --exec \
+		${CHEF_SOLR_BINARY} -- -d -P ${CHEF_SOLR_PIDFILE} -c ${CONFIGFILE} \
+		-L ${CHEF_SOLR_LOGFILE} ${CHEF_SOLR_OPTS} > /dev/null
 	eend $?
 }
 

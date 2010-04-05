@@ -26,7 +26,7 @@ start() {
 	ebegin "Starting Chef server"
 	fix_dir_owners
 	${CHEF_SERVER_BINARY} -d -P ${CHEF_SERVER_PIDFILE} -C ${CONFIGFILE} \
-		-u ${CHEF_USER} -G ${CHEF_GROUP} \
+		-u ${CHEF_USER} -G ${CHEF_GROUP} --name chef-server \
 		-c ${CLUSTER_NODES} -L ${CHEF_SERVER_LOGFILE} > /dev/null
 	eend $?
 }
