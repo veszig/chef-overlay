@@ -100,6 +100,14 @@ openid_cstore_path "/var/lib/chef/openid/cstore"
 
 role_path          "/var/lib/chef/roles"
 
+# cache_options sets options used by the moneta library for local cache for
+# checksums of compared objects.
+
+cache_options({
+  :path => "/var/lib/chef/cache/checksums",
+  :skip_expires => true
+})
+
 # Mixlib::Log::Formatter.show_time specifies whether the chef-client log should
 # contain timestamps.
 # valid values are true or false (no quotes, see above about Ruby idioms). The
@@ -108,12 +116,12 @@ role_path          "/var/lib/chef/roles"
 
 Mixlib::Log::Formatter.show_time = true
 
+# The following options configure the signing CA so it can be read by
+# non-privileged user for the server daemon.
+
 signing_ca_path    "/etc/chef/certificates"
 signing_ca_cert    "/etc/chef/certificates/cert.pem"
 signing_ca_key     "/etc/chef/certificates/key.pem"
+
 openid_store_path  "/var/lib/chef/openid/store"
 search_index_path  "/var/lib/chef/search_index"
-cache_options({
-  :path => "/var/lib/chef/cache/checksums",
-  :skip_expires => true
-})

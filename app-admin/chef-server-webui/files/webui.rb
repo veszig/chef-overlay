@@ -35,7 +35,7 @@ log_location       "/var/log/chef/server-webui.log"
 
 # ssl_verify_mode specifies if the REST client should verify SSL certificates.
 # valid values are :verify_none, :verify_peer. The default Chef Server
-# installation will use a self-generated SSL certificate so this should be 
+# installation will use a self-generated SSL certificate so this should be
 # :verify_none unless you replace the certificate.
 
 ssl_verify_mode    :verify_none

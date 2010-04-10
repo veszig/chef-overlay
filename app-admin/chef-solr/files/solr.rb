@@ -31,7 +31,7 @@ solr_data_path     "/var/lib/chef/solr/data"
 solr_heap_size     "256M"
 
 # Mixlib::Log::Formatter.show_time specifies whether the chef-client log should
-# contain timestamps. 
+# contain timestamps.
 # valid values are true or false (no quotes, see above about Ruby idioms). The
 # printed timestamp is rfc2822, for example:
 # Fri, 31 Jul 2009 19:19:46 -0600

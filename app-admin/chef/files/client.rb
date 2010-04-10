@@ -63,4 +63,3 @@ pid_file           "/var/run/chef/client.pid"
 Mixlib::Log::Formatter.show_time = true
 
 file_backup_path   "/var/lib/chef/backup"
-
