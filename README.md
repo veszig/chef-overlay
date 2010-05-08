@@ -39,10 +39,10 @@ some files to `COLLISION_IGNORE` in your `make.conf`.
     mkdir -p /etc/portage/package.keywords
     # chef-client and dependencies
     wget -q -O /etc/portage/package.keywords/chef \
-      http://gist.github.com/raw/332188/5d6b3f7c98e5033ec661e385700e5fd0cc4a2fcc/package.keywords.chef
+      http://gist.github.com/raw/332188/d00618b9c544e329bc396a2ad5acdcf016f4844c/package.keywords.chef
     # chef-server and dependencies
     wget -q -O /etc/portage/package.keywords/chef-server \
-      http://gist.github.com/raw/332188/38789fa949440681faa5561c7819846dea2226a8/package.keywords.chef-server
+      http://gist.github.com/raw/332188/131925a338433c70f22dc3c1c6254db00e272542/package.keywords.chef-server
 
 [0]: http://wiki.opscode.com/display/chef
 [1]: http://github.com/kennethkalmer/portage-overlay/tree/master/net-misc/rabbitmq-server/
@@ -91,12 +91,6 @@ Start the server:
 
 You should be able to connect to port `4000` and get a nice `401 Unauthorized`
 error from merb (congratulations!).
-
-If you let the client create `client.pem`, the key will be only readable to
-`root`. Chef-solr needs read permissions on the client key and runs as
-`chef:chef`:
-
-    chgrp chef /etc/chef/client.pem && chmod g+r /etc/chef/client.pem
 
 You can now [start][8] using Chef-server with [knife][9] or install the web
 interface:
