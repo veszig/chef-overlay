@@ -39,10 +39,10 @@ some files to `COLLISION_IGNORE` in your `make.conf`.
     mkdir -p /etc/portage/package.keywords
     # chef-client and dependencies
     wget -q -O /etc/portage/package.keywords/chef \
-      http://gist.github.com/raw/332188/d00618b9c544e329bc396a2ad5acdcf016f4844c/package.keywords.chef
+      http://gist.github.com/raw/332188/20fec96e5497c79f0c96d58c05fd9b57696468bb/package.keywords.chef
     # chef-server and dependencies
     wget -q -O /etc/portage/package.keywords/chef-server \
-      http://gist.github.com/raw/332188/131925a338433c70f22dc3c1c6254db00e272542/package.keywords.chef-server
+      http://gist.github.com/raw/332188/b655addb86d03be5ddfb838384476cae1cfaa06b/package.keywords.chef-server
 
 [0]: http://wiki.opscode.com/display/chef
 [1]: http://github.com/kennethkalmer/portage-overlay/tree/master/net-misc/rabbitmq-server/
