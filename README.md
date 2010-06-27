@@ -36,7 +36,7 @@ to be able to install them.
       mv /etc/portage/package.keywords /etc/portage/package.keywords_
       mkdir /etc/portage/package.keywords
       mv /etc/portage/package.keywords_ /etc/portage/package.keywords/misc
-    elsif [ ! -d /etc/portage/package.keywords ] ; then
+    elif [ ! -d /etc/portage/package.keywords ] ; then
       mkdir /etc/portage/package.keywords
     fi
 
