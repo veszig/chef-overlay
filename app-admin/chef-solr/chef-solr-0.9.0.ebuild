@@ -21,7 +21,7 @@ IUSE=""
 RDEPEND=">=net-misc/rabbitmq-server-1.7.0
 	=virtual/jre-1.6.0"
 
-ruby_add_rdepend "=app-admin/chef-0.8.10
+ruby_add_rdepend "=app-admin/chef-${PV}
 	>=dev-ruby/libxml-1.1.3
 	>=dev-ruby/uuidtools-2.0.0"
 

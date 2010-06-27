@@ -21,13 +21,16 @@ IUSE=""
 ruby_add_rdepend ">=dev-ruby/bunny-0.6.0
 	dev-ruby/erubis
 	dev-ruby/extlib
+	dev-ruby/highline
 	<=dev-ruby/json-1.4.2
 	>=dev-ruby/mixlib-authentication-1.1.0
 	>=dev-ruby/mixlib-cli-1.1.0
 	>=dev-ruby/mixlib-config-1.1.0
 	>=dev-ruby/mixlib-log-1.1.0
 	dev-ruby/moneta
-	>=dev-ruby/ohai-0.5.0"
+	>=dev-ruby/ohai-0.5.0
+	<=dev-ruby/rest-client-1.5.1
+	dev-ruby/uuidtools"
 
 all_ruby_install() {
 	all_fakegem_install

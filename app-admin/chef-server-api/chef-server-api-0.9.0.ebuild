@@ -18,20 +18,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=dev-db/couchdb-0.10.0
-	>=net-misc/rabbitmq-server-1.7.0"
-
-ruby_add_rdepend "=app-admin/chef-server-api-0.8.10
-	=app-admin/chef-solr-0.8.10
-	=app-admin/chef-0.8.10
-	dev-ruby/coderay
-	dev-ruby/haml
-	dev-ruby/json
-	dev-ruby/merb-assets
-	dev-ruby/merb-core
-	dev-ruby/merb-haml
-	dev-ruby/merb-helpers
-	dev-ruby/ruby-openid
+ruby_add_rdepend "=app-admin/chef-${PV}
+	<=dev-ruby/json-1.4.2
+	>=dev-ruby/merb-assets-1.1.0
+	>=dev-ruby/merb-core-1.1.0
+	>=dev-ruby/merb-helpers-1.1.0
+	>=dev-ruby/merb-param-protection-1.1.0
+	>=dev-ruby/merb-slices-1.1.0
+	>=dev-ruby/uuidtools-2.1.1
 	www-servers/thin"
 
 pkg_setup() {
@@ -42,16 +36,14 @@ pkg_setup() {
 each_ruby_install() {
 	each_fakegem_install
 	ruby_fakegem_doins -r app
-	ruby_fakegem_doins config-webui.ru
-	ruby_fakegem_doins config.ru
 	ruby_fakegem_doins -r config
 	ruby_fakegem_doins -r public
 }
 
 all_ruby_install() {
 	all_fakegem_install
-	doinitd "${FILESDIR}/initd/chef-server"
-	doconfd "${FILESDIR}/confd/chef-server"
+	doinitd "${FILESDIR}/initd/chef-server-api"
+	doconfd "${FILESDIR}/confd/chef-server-api"
 	keepdir /etc/chef
 	insinto /etc/chef
 	doins "${FILESDIR}/server.rb"
@@ -67,6 +59,6 @@ all_ruby_install() {
 pkg_postinst() {
 	elog
 	elog "You should edit /etc/chef/server.rb before starting the service with"
-	elog "/etc/init.d/chef-server start"
+	elog "/etc/init.d/chef-server-api start"
 	elog
 }

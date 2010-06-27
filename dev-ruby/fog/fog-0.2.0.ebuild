@@ -10,17 +10,18 @@ RUBY_FAKEGEM_TASK_TEST=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="Ohai profiles your system and emits JSON"
-HOMEPAGE="http://wiki.opscode.com/display/ohai"
+DESCRIPTION="The Ruby cloud computing library"
+HOMEPAGE="http://github.com/geemus/fog"
 
-LICENSE="Apache-2.0"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-ruby_add_rdepend "dev-ruby/extlib
+ruby_add_rdepend ">=dev-ruby/excon-0.0.24
+	>=dev-ruby/formatador-0.0.10
 	dev-ruby/json
-	dev-ruby/mixlib-cli
-	dev-ruby/mixlib-config
-	dev-ruby/mixlib-log
-	dev-ruby/systemu"
+	dev-ruby/mime-types
+	dev-ruby/net-ssh
+	dev-ruby/nokogiri
+	dev-ruby/ruby-hmac"
