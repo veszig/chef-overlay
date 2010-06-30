@@ -42,7 +42,7 @@ to be able to install them.
 
     # chef-client and dependencies
     cat >> /etc/portage/package.keywords/chef <<\EOF
-    =app-admin/chef-0.9.0
+    =app-admin/chef-0.9.4
     =dev-ruby/abstract-1.0.0
     =dev-ruby/bunny-0.6.0
     =dev-ruby/erubis-2.6.5
@@ -86,10 +86,10 @@ The server part is a bit more work:
 
     # chef-server and dependencies
     cat >> /etc/portage/package.keywords/chef-server <<\EOF
-    =app-admin/chef-server-0.9.0
-    =app-admin/chef-server-api-0.9.0
-    =app-admin/chef-server-webui-0.9.0
-    =app-admin/chef-solr-0.9.0
+    =app-admin/chef-server-0.9.4
+    =app-admin/chef-server-api-0.9.4
+    =app-admin/chef-server-webui-0.9.4
+    =app-admin/chef-solr-0.9.4
     =dev-ruby/bundler-0.9.26
     =dev-ruby/coderay-0.9.3
     =dev-ruby/daemons-1.0.10-r1
